@@ -1,0 +1,95 @@
+const router = require('express').Router();
+//const UserModel = require("../models/user.model");
+const authController = require('../controllers/auth.controller');
+//const userController = require('../controllers/user.controller');
+//const uploadController = require('../controllers/upload.controller');
+///////////////////////////////////////////
+
+//const transactionController = require('../controllers/transaction.controller');
+
+///////////////////////////////////////////
+//const multer = require('multer');
+//const path = require('path');
+
+
+
+/*const storage = multer.diskStorage({
+    //fonction destination du fichier(image)
+    destination: (req, file, cb) => {
+
+        cb(null, "./client/public/uploads/profil")
+    },
+    //fonction nom du fichier
+    filename: (req, file, cb) => {
+
+        cb(null, "profil.PNG");
+    }
+
+})*/
+
+//fonction pour traiter le format du fichier
+/*const fileFilter = (req, file, cb) => {
+    console.log(file);
+    //rejeter les fichier qui ne sont pas compatibles
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+        console.log("le format est validé");
+        cb(null, true);
+
+    } else {
+        cb(null, false);
+        console.log("le format est imcompatible");
+
+    }
+
+};*/
+
+//fonction finale pour le traitement d'image
+/*const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 5
+    },
+    fileFilter: fileFilter
+});*/
+
+
+
+
+
+
+//parti authentification( s'incrire ,connexion ,deconnexion) racine: localhoat:8080/api/user/
+router.post("/register", authController.signUp); //pour ajouter un utilisateur
+router.post('/registerEntreprise', authController.signUpEntreprise);//pour ajouter entreprise
+router.post('/registerAdmin', authController.signUpAdmin);//pour ajouter les admin 
+//router.post('/login', authController.signIn); //pour la connexion
+//router.get('/logout', authController.logout); //pour se deconnecter
+
+
+
+//parti user DB
+/*
+router.get('/', userController.getAllUsers); //donner tous les utilisateurs
+router.get('/:id', userController.userInfo); //donner les information d'un utilisateur a partir de son id
+router.put('/:id', userController.updateUser); //mettre a jour un utilisateur
+router.delete('/:id', userController.deleteUser); //supprimer un utilisateur
+
+*/
+
+//upload
+//router.post('/upload', upload.single('file'), uploadController.uploadProfil);
+
+//transaction
+//parti user DB
+
+//router.get("/afficherTansaction/:id", transactionController.afficherTransaction /*displayTransactionsController*/);
+//router.post("/ajouterFonds/:id", transactionController.ajouterFonds /*addFundsController*/);
+//router.post("/retirerFonds/:id", transactionController.retirerFonds /*withdrawController*/);
+
+//router.post("/transfererFonds/:id", transactionController.transfererFonds /*transferFundsController*/);
+
+
+//reinitialiser le mot de passe
+//router.put('/password-oublie', authController.passwordOublie);
+
+
+module.exports = router;

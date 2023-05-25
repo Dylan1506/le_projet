@@ -1,0 +1,90 @@
+import React from 'react';
+import '../styles/home.css';
+
+
+const Home = () => {
+    return (
+        <div>
+      <header>
+        <div className="logo">
+          <img src="logo.png" alt="Logo" />
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/Event">Planifier Evenement</a></li>
+            <li><a href="/Pofile">Se connecter</a></li>
+         
+           
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <section className="hero">
+          <h1>Bienvenue sur notre site d'événement</h1>
+          <p>Ne manquez aucun événement et découvrez les dernières tendances</p>
+          <button>En savoir plus</button>
+        </section>
+
+        <section className="events">
+          <h2>Nos prochains événements</h2>
+          <div className="event">
+            <img src="" alt="" />
+            <h3>Titre de l'événement</h3>
+            <p>Date et heure de l'événement</p>
+            <button>En savoir plus</button>
+          </div>
+
+          <div className="event">
+            <img src="" alt="" />
+            <h3>Titre de l'événement</h3>
+            <p>Date et heure de l'événement</p>
+            <button>En savoir plus</button>
+          </div>
+
+          <div className="event">
+            <img src="" alt="" />
+            <h3>Titre de l'événement</h3>
+            <p>Date et heure de l'événement</p>
+            <button>En savoir plus</button>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div className="footer-content">
+          <div className="footer-section about">
+            <h3>A propos</h3>
+            <p>Notre site d'événement est une plateforme pour découvrir et participer aux meilleurs événements du moment.</p>
+          </div>
+
+          <div className="footer-section contact">
+            <h3>Contactez-nous</h3>
+            <form>
+              <input type="email" name="email" placeholder="Votre email" />
+              <textarea name="message" placeholder="Votre message"></textarea>
+              <button type="submit">Envoyer</button>
+            </form>
+          </div>
+
+          <div className="footer-section links">
+            <h3>Liens utiles</h3>
+            <ul>
+              <li><a href="#">A propos</a></li>
+              <li><a href="#">Se connecter</a></li>
+              <li><a href="#">S'inscrire</a></li>
+              <li><a href="#">Contactez-nous</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <p>Tous droits réservés © 2023 | Site créé par Votre nom</p>
+        </div>
+      </footer>
+    </div>
+    );
+};
+
+export default Home;

@@ -1,0 +1,147 @@
+const UserModel = require('../models/user.model'); //ce fichier contient l'inscription , la connexion et la deconnexion de l'utilisateur
+//const jwt = require('jsonwebtoken');
+//const { signUpErrors, signInErrors } = require('../utils/errors.utils');
+//const mailgun = require("mailgun-js");
+//const DOMAIN = '';
+//const mg = mailgun({ apiKey: process.env.MAILGUN_APIKEY, domain: DOMAIN });
+
+
+/*
+ jsonwebtoken Il permet l'échange sécurisé de jetons (tokens)
+  entre plusieurs parties.*/
+
+
+const maxAge = 3 * 24 * 60 * 60 * 1000;
+
+
+const createToken = (id) => {
+    return jwt.sign({ id }, process.env.TOKEN_SECRET, {
+        expiresIn: maxAge
+    });
+};
+
+
+//fonction pour inscription de l'utilisateur
+
+
+module.exports.signUp = async (req, res) => {
+    console.log(req.body);
+    const {
+        nom,
+        prenom,
+        email,
+        password,
+        contact,      
+    } = req.body;
+    try {
+        //L'opérateur await permet d'attendre la résolution d'une promesse ( Promise ). Il ne peut être utilisé qu'au sein d'une fonction asynchrone
+        const user = await UserModel.create({
+            nom,
+            prenom,
+            email,
+            password,          
+            contact,         
+        });
+        res.status(201).json({ user: user._id });
+    } catch (err) {
+        const errors = signUpErrors(err);
+        res.status(200).send({ errors });
+    }
+};
+
+
+module.exports.signUpEntreprise = async (req, res) => {
+    console.log(req.body);
+    const {
+        raisonSociale,  
+        email,
+        password,
+        contact,
+    } = req.body;
+
+
+    try {
+        //L'opérateur await permet d'attendre la résolution d'une promesse ( Promise ). Il ne peut être utilisé qu'au sein d'une fonction asynchrone
+        const user = await UserModel.create({
+            raisonSociale,      
+            email,
+            password,        
+            contact,        
+        });
+        res.status(201).json({ user: user._id });
+    } catch (err) {
+        const errors = signUpErrors(err);
+        res.status(200).send({ errors });
+    }
+};
+
+
+
+
+//route pour ajouter un admin
+
+
+module.exports.signUpAdmin = async (req, res) => {
+    console.log(req.body);
+    const {
+        nom,
+        prenom,
+        email,
+        password,
+        contact     
+    } = req.body;
+
+
+    try {
+        //L'opérateur await permet d'attendre la résolution d'une promesse ( Promise ). Il ne peut être utilisé qu'au sein d'une fonction asynchrone
+        const user = await UserModel.create({
+            nom,
+            prenom,
+            email,
+            password,
+            contact         
+        });
+        res.status(201).json({ user: user._id });
+    } catch (err) {
+        const errors = signUpErrors(err);
+        res.status(200).send({ errors });
+    }
+};
+
+
+
+
+
+
+
+
+//fonction pour se connecter
+/*accNo */
+/*
+module.exports.signIn = async (req, res) => {
+    const { email, password } = req.body;
+
+
+    try {
+        const user = await UserModel.login(email, password); //on va regarder dans la db si les deux champs existent
+        const token = createToken(user._id); //et ici on va recuperer
+        res.cookie('jwt', token, { httpOnly: true, maxAge });
+        res.status(200).json({ user: user._id });
+    } catch (err) {
+        const errors = signInErrors(err);
+        res.status(200).json({ errors });
+    }
+};*/
+
+
+//fonction pour se deconnecter
+/*
+module.exports.logout = (req, res) => {
+    res.cookie('jwt', '', { maxAge: 1 });
+    res.redirect('/');
+};*/
+
+
+
+
+
