@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../../styles/SignIn_Up.css";
 import axios from "axios";
 
 const SignUpForm = () => {

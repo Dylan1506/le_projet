@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
-import "../styles/event.css";
 import { UidContext } from "../components/AppContext";
+import { Link } from "react-router-dom";
 
-const EventCreationPage = () => {
+const NewEvent = () => {
   const uid = useContext(UidContext);
 
   const [titre, setTitre] = useState("");
@@ -47,108 +47,168 @@ const EventCreationPage = () => {
   };
 
   return (
-    <div>
-      <header>
-        <h1>Création d'événement</h1>
-      </header>
-      <main>
-        <form action="" onSubmit={handleCreerEvent}>
-          <div className="form-group">
-            <label htmlFor="nomevenement">Nom de l'événement:</label>
-            <input
-              type="text"
-              name="titre"
-              id="titre"
-              onChange={(e) => setTitre(e.target.value)}
-              value={titre}
-              required
-            />
+    <section className="bg-gray-100">
+      <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-lg text-center">
+          <h1 className="text-2xl font-bold sm:text-3xl">
+            Create a new event!
+          </h1>
+
+          <p className="mt-4 text-gray-500">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero
+            nulla eaque error neque ipsa culpa autem, at itaque nostrum!
+          </p>
+        </div>
+
+        <form action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+          <div>
+            <label htmlFor="title" className="sr-only">
+              Title
+            </label>
+
+            <div className="relative">
+              <input
+                type="Title"
+                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                placeholder="Enter title"
+              />
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="Prix">Prix</label>
-            <input
-              type="number"
-              name="Prix"
-              id="Prix"
-              onChange={(e) => setprix(e.target.value)}
-              value={prix}
-              required
-            />
+
+          <div>
+            <label htmlFor="price" className="sr-only">
+              Price
+            </label>
+
+            <div className="relative">
+              <input
+                type="number"
+                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                placeholder="Enter price"
+              />
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="datedebut">Date de début:</label>
-            <input
-              type="date"
-              name="DateDebut"
-              id="DateDebut"
-              onChange={(e) => setdate_debut(e.target.value)}
-              value={date_debut}
-              required
-            />
+
+          <div className="flex items-center justify-between">
+            <p className="text-sm text-gray-500">
+              No account?
+              <Link className="underline" href="/register">
+                Sign up
+              </Link>
+            </p>
+
+            <button
+              type="submit"
+              className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
+            >
+              Sign in
+            </button>
           </div>
-          <div className="form-group">
-            <label htmlFor="datefin">Date de fin:</label>
-            <input
-              type="date"
-              name="DateFin"
-              id="DateFin"
-              onChange={(e) => setdate_fin(e.target.value)}
-              value={date_fin}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="heuredebut">Heure de début:</label>
-            <input
-              type="time"
-              name="HeureDebut"
-              id="HeureDebut"
-              onChange={(e) => setheure_debut(e.target.value)}
-              value={heure_debut}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="heurefin">Heure de fin:</label>
-            <input
-              type="time"
-              name="HeureFin"
-              id="HeureFin"
-              onChange={(e) => setheure_fin(e.target.value)}
-              value={heure_fin}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="lieu">Lieu de l'événement:</label>
-            <input
-              type="text"
-              name="Lieu"
-              id="Lieu"
-              onChange={(e) => setlieu(e.target.value)}
-              value={lieu}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="description">Description de l'événement:</label>
-            <textarea
-              name="description"
-              rows="5"
-              id="description"
-              onChange={(e) => setDescription(e.target.value)}
-              value={description}
-              required
-            ></textarea>
-          </div>
-          <input type="submit" value="valider " />
         </form>
-      </main>
-      <footer>
-        <p>Tous droits réservés &copy; 2023</p>
-      </footer>
-    </div>
+      </div>
+    </section>
+    // <div>
+    //   <header>
+    //     <h1>Création d'événement</h1>
+    //   </header>
+    //   <main>
+    //     <form action="" onSubmit={handleCreerEvent}>
+    //       <div className="form-group">
+    //         <label htmlFor="nomevenement">Nom de l'événement:</label>
+    //         <input
+    //           type="text"
+    //           name="titre"
+    //           id="titre"
+    //           onChange={(e) => setTitre(e.target.value)}
+    //           value={titre}
+    //           required
+    //         />
+    //       </div>
+    //       <div className="form-group">
+    //         <label htmlFor="Prix">Prix</label>
+    //         <input
+    //           type="number"
+    //           name="Prix"
+    //           id="Prix"
+    //           onChange={(e) => setprix(e.target.value)}
+    //           value={prix}
+    //           required
+    //         />
+    //       </div>
+    //       <div className="form-group">
+    //         <label htmlFor="datedebut">Date de début:</label>
+    //         <input
+    //           type="date"
+    //           name="DateDebut"
+    //           id="DateDebut"
+    //           onChange={(e) => setdate_debut(e.target.value)}
+    //           value={date_debut}
+    //           required
+    //         />
+    //       </div>
+    //       <div className="form-group">
+    //         <label htmlFor="datefin">Date de fin:</label>
+    //         <input
+    //           type="date"
+    //           name="DateFin"
+    //           id="DateFin"
+    //           onChange={(e) => setdate_fin(e.target.value)}
+    //           value={date_fin}
+    //           required
+    //         />
+    //       </div>
+    //       <div className="form-group">
+    //         <label htmlFor="heuredebut">Heure de début:</label>
+    //         <input
+    //           type="time"
+    //           name="HeureDebut"
+    //           id="HeureDebut"
+    //           onChange={(e) => setheure_debut(e.target.value)}
+    //           value={heure_debut}
+    //           required
+    //         />
+    //       </div>
+    //       <div className="form-group">
+    //         <label htmlFor="heurefin">Heure de fin:</label>
+    //         <input
+    //           type="time"
+    //           name="HeureFin"
+    //           id="HeureFin"
+    //           onChange={(e) => setheure_fin(e.target.value)}
+    //           value={heure_fin}
+    //           required
+    //         />
+    //       </div>
+    //       <div className="form-group">
+    //         <label htmlFor="lieu">Lieu de l'événement:</label>
+    //         <input
+    //           type="text"
+    //           name="Lieu"
+    //           id="Lieu"
+    //           onChange={(e) => setlieu(e.target.value)}
+    //           value={lieu}
+    //           required
+    //         />
+    //       </div>
+    //       <div className="form-group">
+    //         <label htmlFor="description">Description de l'événement:</label>
+    //         <textarea
+    //           name="description"
+    //           rows="5"
+    //           id="description"
+    //           onChange={(e) => setDescription(e.target.value)}
+    //           value={description}
+    //           required
+    //         ></textarea>
+    //       </div>
+    //       <input type="submit" value="valider " />
+    //     </form>
+    //   </main>
+    //   <footer>
+    //     <p>Tous droits réservés &copy; 2023</p>
+    //   </footer>
+    // </div>
   );
 };
 
-export default EventCreationPage;
+export default NewEvent;

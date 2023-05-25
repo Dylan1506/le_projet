@@ -1,17 +1,15 @@
-import React from 'react';
-import '../styles/profil.css';
-
+import React from "react";
 
 function Profil() {
   return (
-    <div className='test'>
+    <div className="test">
       <header>
         <h1>Profil Utilisateur</h1>
       </header>
       <section className="profile">
         <div className="profile-info">
           <h2>Informations personnelles</h2>
-          <img src="client\public\image\3.jpg" alt="Photo de profil" />
+          <img src="client/public/image/3.jpg" alt="Profil" />
           <div className="profile-details">
             <h3>Nom d'utilisateur</h3>
             <p>Nom: John Doe</p>
@@ -26,8 +24,12 @@ function Profil() {
             <p>Pays: France</p>
             <p>Ville: Paris</p>
             <div className="button-container">
-              <a href="#" className="button modify-button">Modifier le profil</a>
-              <a href="#" className="button delete-button">Se déconnecter</a>
+              <a href="#" className="button modify-button">
+                Modifier le profil
+              </a>
+              <a href="#" className="button delete-button">
+                Se déconnecter
+              </a>
             </div>
           </div>
         </div>
@@ -42,10 +44,17 @@ function Profil() {
               <p>Heure_debut: 18:30</p>
               <p>Heure_fin: 20:23</p>
               <p>Lieu: Marseille</p>
-              <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p>
+                Description: Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit.
+              </p>
               <div className="button-container">
-                <a href="#" className="button modify-button">Modifier</a>
-                <a href="#" className="button delete-button">Supprimer</a>
+                <a href="#" className="button modify-button">
+                  Modifier
+                </a>
+                <a href="#" className="button delete-button">
+                  Supprimer
+                </a>
               </div>
             </div>
           </div>
@@ -58,14 +67,24 @@ function Profil() {
               <p>Heure_debut: 18:30</p>
               <p>Heure_fin: 20:23</p>
               <p>Lieu: Marseille</p>
-              <p>Description: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>
+                Description: Sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+              </p>
               <div className="button-container">
-                <a href="#" className="button modify-button">Modifier</a>
-                <a href="#" className="button delete-button">Supprimer</a>
+                <a href="#" className="button modify-button">
+                  Modifier
+                </a>
+                <a href="#" className="button delete-button">
+                  Supprimer
+                </a>
               </div>
             </div>
           </div>
-          <a href="#" className="button"> Créer un nouvel événement</a>
+          <a href="#" className="button">
+            {" "}
+            Créer un nouvel événement
+          </a>
         </div>
         <div className="profile-participating">
           <h2>Événements inscrits</h2>
@@ -78,7 +97,10 @@ function Profil() {
               <p>Heure_debut: 18:30</p>
               <p>Heure_fin: 20:23</p>
               <p>Lieu: Marseille</p>
-              <p>Description: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+              <p>
+                Description: Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris.
+              </p>
             </div>
           </div>
           <div className="event-card">
@@ -90,7 +112,10 @@ function Profil() {
               <p>Heure_debut: 18:30</p>
               <p>Heure_fin: 20:23</p>
               <p>Lieu: Marseille</p>
-              <p>Description: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+              <p>
+                Description: Duis aute irure dolor in reprehenderit in voluptate
+                velit esse cillum dolore eu fugiat nulla pariatur.
+              </p>
             </div>
           </div>
         </div>
