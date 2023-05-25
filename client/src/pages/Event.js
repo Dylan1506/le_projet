@@ -62,46 +62,130 @@ const NewEvent = () => {
 
         <form action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
           <div>
-            <label htmlFor="title" className="sr-only">
+            <label for="title" class="block text-xs font-medium text-gray-700">
               Title
             </label>
 
-            <div className="relative">
-              <input
-                type="Title"
-                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                placeholder="Enter title"
-              />
-            </div>
+            <input
+              type="text"
+              id="title"
+              placeholder="Type here"
+              class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+            />
           </div>
 
           <div>
-            <label htmlFor="price" className="sr-only">
+            <label for="title" class="block text-xs font-medium text-gray-700">
               Price
             </label>
 
-            <div className="relative">
-              <input
-                type="number"
-                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                placeholder="Enter price"
-              />
-            </div>
+            <input
+              type="text"
+              id="title"
+              placeholder="Type here"
+              class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+            />
+          </div>
+
+          <div>
+            <label for="title" class="block text-xs font-medium text-gray-700">
+              Date de debut
+            </label>
+
+            <input
+              type="date"
+              id="title"
+              placeholder="Type here"
+              class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+              onChange={(e) => setdate_debut(e.target.value)}
+              value={date_debut}
+              required
+            />
+          </div>
+
+          <div>
+            <label for="title" class="block text-xs font-medium text-gray-700">
+              Date de fin
+            </label>
+
+            <input
+              type="date"
+              id="title"
+              placeholder="Type here"
+              class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+              onChange={(e) => setdate_debut(e.target.value)}
+              value={date_debut}
+              required
+            />
+          </div>
+
+          <div>
+            <label for="title" class="block text-xs font-medium text-gray-700">
+              Heure de debut
+            </label>
+
+            <input
+              type="time"
+              id="title"
+              placeholder="Type here"
+              class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+              onChange={(e) => setdate_debut(e.target.value)}
+              value={date_debut}
+              required
+            />
+          </div>
+
+          <div>
+            <label for="title" class="block text-xs font-medium text-gray-700">
+              Heure de fin
+            </label>
+
+            <input
+              type="time"
+              id="title"
+              placeholder="Type here"
+              class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+              onChange={(e) => setdate_debut(e.target.value)}
+              value={date_debut}
+              required
+            />
+          </div>
+
+          <div>
+            <label for="title" class="block text-xs font-medium text-gray-700">
+              Lieu
+            </label>
+
+            <input
+              type="text"
+              id="title"
+              placeholder="Type here"
+              class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+              onChange={(e) => setdate_debut(e.target.value)}
+              value={date_debut}
+              required
+            />
+          </div>
+
+          <div>
+            <label for="title" class="block text-xs font-medium text-gray-700">
+              Description
+            </label>
+
+            <textarea
+              class="w-full rounded-lg border-gray-200 p-3 text-sm"
+              placeholder="Message"
+              rows="8"
+              id="message"
+            ></textarea>
           </div>
 
           <div className="flex items-center justify-between">
-            <p className="text-sm text-gray-500">
-              No account?
-              <Link className="underline" href="/register">
-                Sign up
-              </Link>
-            </p>
-
             <button
               type="submit"
               className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
             >
-              Sign in
+              Create Event
             </button>
           </div>
         </form>
@@ -141,9 +225,9 @@ const NewEvent = () => {
     //           type="date"
     //           name="DateDebut"
     //           id="DateDebut"
-    //           onChange={(e) => setdate_debut(e.target.value)}
-    //           value={date_debut}
-    //           required
+    // onChange={(e) => setdate_debut(e.target.value)}
+    // value={date_debut}
+    // required
     //         />
     //       </div>
     //       <div className="form-group">

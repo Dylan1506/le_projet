@@ -2,7 +2,7 @@ import React from "react";
 
 const Testimonials = () => {
   return (
-    <section className="bg-gray-100">
+    <section className="bg-gray-50" id="testimonials">
       <div className="mx-auto max-w-screen-2xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="items-end justify-between sm:flex">
           <div className="max-w-xl">

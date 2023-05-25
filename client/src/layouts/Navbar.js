@@ -38,11 +38,62 @@ const Navbar = () => {
               <li>
                 <Link
                   className="text-gray-500 transition hover:text-gray-500/75"
-                  to="/profil"
+                  to="/profile  "
                 >
                   Profil
                 </Link>
               </li>
+
+              {/* <li>
+                <ScrollLink
+                  spy={true}
+                  smooth={true}
+                  offset={-50}
+                  duration={500}
+                  className="cursor-pointer text-gray-500 transition hover:text-gray-500/75"
+                  to="services"
+                >
+                  Services
+                </ScrollLink>
+              </li>
+
+              <li>
+                <ScrollLink
+                  spy={true}
+                  smooth={true}
+                  offset={-50}
+                  duration={500}
+                  className="cursor-pointer text-gray-500 transition hover:text-gray-500/75"
+                  to="about"
+                >
+                  About us
+                </ScrollLink>
+              </li>
+
+              <li>
+                <ScrollLink
+                  spy={true}
+                  smooth={true}
+                  offset={-50}
+                  duration={500}
+                  className="cursor-pointer text-gray-500 transition hover:text-gray-500/75"
+                  to="testimonials"
+                >
+                  Testimonials
+                </ScrollLink>
+              </li>
+              <li>
+                <ScrollLink
+                  spy={true}
+                  smooth={true}
+                  offset={-50}
+                  duration={500}
+                  className="cursor-pointer text-gray-500 transition hover:text-gray-500/75"
+                  to="contact"
+                >
+                  Contact us
+                </ScrollLink>
+              </li> */}
             </ul>
           </nav>
 
