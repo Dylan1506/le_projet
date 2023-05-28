@@ -1,10 +1,16 @@
 import React from "react";
 import EventCard from "../components/EventCard";
 import ProfileCard from "../components/ProfileCard";
+import { useSelector } from "react-redux";
 
 function Profile() {
+  const userData = useSelector((state) => state.userReducer);
+  const eventsData= useSelector((state)=> state.allEventReducer);
+
+  
+
   return (
-    <section className="">
+    <section className="" >
       <div className="mx-auto flex max-w-screen-xl flex-col items-center gap-8 px-4 sm:px-6 lg:px-8">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-gray-800 lg:text-4xl">
           User Profil
@@ -20,9 +26,8 @@ function Profile() {
         </a>
 
         <div className="grid grid-cols-2 gap-4">
-          <EventCard />
-          <EventCard />
-          <EventCard />
+          <EventCard userData={userData} eventsData={eventsData} />
+         
         </div>
       </div>
     </section>

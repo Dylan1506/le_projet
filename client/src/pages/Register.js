@@ -1,6 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 const Register = () => {
+  const [nom, setNom] = useState("");
+  const [prenom, setPrenom] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [controlPassword, setControlPassword] = useState("");
+
+  //////////////////////////////////////
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    const terms = document.getElementById("terms");
+    const emailError = document.querySelector(".email.error");
+    const passwordError = document.querySelector(".password.error");
+    const passwordConfirmError = document.querySelector(
+      ".password-confirm.error"
+    );
+    const termsError = document.querySelector(".terms.error");
+
+    passwordConfirmError.innerHTML = "";
+    termsError.innerHTML = "";
+
+    if (password !== controlPassword || !terms.checked) {
+      if (password !== controlPassword)
+        passwordConfirmError.innerHTML =
+          "Les mots de passe ne correspondent pas";
+
+      if (!terms.checked)
+        termsError.innerHTML = "Veuillez valider les conditions générales";
+    } else {
+      await axios({
+        method: "post",
+        url: "http://localhost:5000/api/user/register",
+        data: {
+          nom,
+          prenom,
+          email,
+          password,
+        },
+      })
+        .then((res) => {
+          console.log(res);
+          if (res.data.errors) {
+            emailError.innerHTML = res.data.errors.email;
+            passwordError.innerHTML = res.data.errors.password;
+          } else {
+            window.location = "/login";
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+  // ///////////////////////////://///
+
   return (
     <section className="bg-gray-100">
       <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
@@ -72,7 +126,11 @@ const Register = () => {
               </p>
             </div>
 
-            <form action="#" className="mt-8 grid grid-cols-6 gap-6">
+            <form
+              action="#"
+              onSubmit={handleRegister}
+              className="mt-8 grid grid-cols-6 gap-6"
+            >
               <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="FirstName"
@@ -85,6 +143,8 @@ const Register = () => {
                   type="text"
                   id="FirstName"
                   name="first_name"
+                  onChange={(e) => setNom(e.target.value)}
+                  value={nom}
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                 />
               </div>
@@ -101,6 +161,8 @@ const Register = () => {
                   type="text"
                   id="LastName"
                   name="last_name"
+                  onChange={(e) => setPrenom(e.target.value)}
+                  value={prenom}
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                 />
               </div>
@@ -117,8 +179,12 @@ const Register = () => {
                   type="email"
                   id="Email"
                   name="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                 />
+                <br />
+                <div className="email error"></div>
               </div>
 
               <div className="col-span-6 sm:col-span-3">
@@ -133,8 +199,12 @@ const Register = () => {
                   type="password"
                   id="Password"
                   name="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                 />
+                <br />
+                <div className="password error"></div>
               </div>
 
               <div className="col-span-6 sm:col-span-3">
@@ -149,16 +219,20 @@ const Register = () => {
                   type="password"
                   id="PasswordConfirmation"
                   name="password_confirmation"
+                  onChange={(e) => setControlPassword(e.target.value)}
+                  value={controlPassword}
                   className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                 />
+                <br />
+                <div className="password-confirm error"></div>
               </div>
 
               <div className="col-span-6">
-                <label htmlFor="MarketingAccept" className="flex gap-4">
+                <label htmlFor="terms" className="flex gap-4">
                   <input
                     type="checkbox"
-                    id="MarketingAccept"
-                    name="marketing_accept"
+                    id="terms"
+                    name="terms"
                     className="h-5 w-5 rounded-md border-gray-200 bg-white shadow-sm"
                   />
 
@@ -167,6 +241,7 @@ const Register = () => {
                     company announcements.
                   </span>
                 </label>
+                <div className="terms error"></div>
               </div>
 
               <div className="col-span-6">
@@ -184,7 +259,10 @@ const Register = () => {
               </div>
 
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
-                <button className="inline-block shrink-0 rounded-md border border-teal-600 bg-teal-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-teal-600 focus:outline-none focus:ring active:text-teal-500">
+                <button
+                  type="submit"
+                  className="inline-block shrink-0 rounded-md border border-teal-600 bg-teal-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-teal-600 focus:outline-none focus:ring active:text-teal-500"
+                >
                   Create an account
                 </button>
 

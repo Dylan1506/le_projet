@@ -123,7 +123,7 @@ const Service = () => {
               <h2 className="mt-2 font-bold">Accountant</h2>
 
               <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
-                Lorem ipsum dolor sit amet consectetur.
+                Lorem ipsum dolor sit amet .
               </p>
             </a>
 
@@ -190,7 +190,7 @@ const Service = () => {
 
           <div className="mx-auto max-w-lg text-center lg:mx-0 ltr:lg:text-left rtl:lg:text-right">
             <h2 className="text-3xl font-bold sm:text-4xl">
-              Find your career path
+              Services Us
             </h2>
 
             <p className="mt-4 text-gray-600">

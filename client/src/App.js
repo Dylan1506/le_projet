@@ -13,9 +13,16 @@ import Register from "./pages/Register";
 import Footer from "./layouts/Footer";
 import Navbar from "./layouts/Navbar";
 import EditProfile from "./pages/EditProfile";
+import { useDispatch } from "react-redux";
+import { getUser } from "./actions/user.actions";
+import UpdateEvent from "./components/UpdateEvent";
+
+
 
 const App = () => {
   const [uid, setUid] = useState(null);
+  const dispatch = useDispatch();
+  
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -30,7 +37,10 @@ const App = () => {
         .catch((err) => console.log("pas de Token"));
     };
     fetchToken();
-  }, [uid]);
+
+    if (uid) dispatch(getUser(uid));
+   
+  }, [uid,dispatch]);
 
   return (
     <UidContext.Provider value={uid}>
@@ -38,6 +48,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" exact element={<Home />} />
+          <Route path="/updateEvent" element={<UpdateEvent />} />
           <Route path="/event" element={<NewEvent />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />

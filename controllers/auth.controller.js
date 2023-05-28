@@ -19,8 +19,8 @@ module.exports.signUp = async (req, res) => {
         nom,
         prenom,
         email,
-        password,
-        contact   
+        password
+       
     } = req.body;
     try {
         //L'opérateur await permet d'attendre la résolution d'une promesse ( Promise ). Il ne peut être utilisé qu'au sein d'une fonction asynchrone
@@ -28,8 +28,8 @@ module.exports.signUp = async (req, res) => {
             nom,
             prenom,
             email,
-            password,
-            contact         
+            password
+          
             
         });
         res.status(201).json({ user: user._id });
@@ -52,7 +52,6 @@ module.exports.signUpAdmin = async (req, res) => {
         contact   
     } = req.body;
 
-
     try {
         //L'opérateur await permet d'attendre la résolution d'une promesse ( Promise ). Il ne peut être utilisé qu'au sein d'une fonction asynchrone
         const user = await UserModel.create({
@@ -64,7 +63,8 @@ module.exports.signUpAdmin = async (req, res) => {
         });
         res.status(201).json({ user: user._id });
     } catch (err) {
-      res.status(200).send({err});
+        const errors=signUpErrors(err);
+        res.status(200).send({errors});
     }
 };
 

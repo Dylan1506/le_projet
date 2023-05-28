@@ -46,7 +46,7 @@ module.exports.userInfo = async (req, res) => {
 
 
 //fonction pour la mise a jour
-/*dob 
+ 
 module.exports.updateUser = async (req, res) => {
     if (!ObjectID.isValid(req.params.id)) return res.status(400).send('ID unknown : ' + req.params.id);
 
@@ -55,11 +55,12 @@ module.exports.updateUser = async (req, res) => {
             { _id: req.params.id },
             {
                 $set: {
+                    nom: req.body.nom,
+                    prenom: req.body.prenom,
                     contact: req.body.contact,
-                    adresse: req.body.ville,
-                    codePostale: req.body.codePostale,
-                    agence: req.body.nomAgence,
-                    typecompte: req.body.typeCompte
+                    adresse: req.body.adresse,
+                    ville: req.body.ville,
+                    
                 }
             },
             { new: true, upsert: true, setDefaultsOnInsert: true }
@@ -69,7 +70,7 @@ module.exports.updateUser = async (req, res) => {
     } catch (err) {
         return res.status(500).json({ message: err });
     }
-}; */
+}; 
 
 //fonction pour supprimer un utilisateur
 

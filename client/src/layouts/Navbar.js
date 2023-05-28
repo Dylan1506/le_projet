@@ -1,7 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UidContext } from "../components/AppContext";
+
+import axios from "axios";
+import cookie from "js-cookie";
+import { useSelector } from "react-redux";
+import userReducer from "../reducers/user.reducer";
 
 const Navbar = () => {
+  const uid = useContext(UidContext);
+  const userData = useSelector((state) => state.userReducer);
+
+  const removeCookie = (key) => {
+    if (window !== "undefined") {
+      cookie.remove(key, { expires: 1 });
+    }
+  };
+
+  const logout = async () => {
+    await axios({
+      method: "get",
+      url: "http://localhost:5000/api/user/logout",
+      withCredentials: true,
+    })
+      .then(() => removeCookie("jwt"))
+      .catch((err) => console.log(err));
+
+    window.location = "/";
+  };
+
   return (
     <header
       aria-label="Site Header"
@@ -23,116 +50,106 @@ const Navbar = () => {
           </svg>
         </Link>
 
-        <div className="flex flex-1 items-center justify-end md:justify-between">
-          <nav aria-label="Site Nav" className="hidden md:block">
-            <ul className="flex items-center gap-6 text-sm">
-              <li>
+        {uid ? (
+          <div className="flex flex-1 items-center justify-end md:justify-between">
+            <nav aria-label="Site Nav" className="hidden md:block">
+              <ul className="flex items-center gap-6 text-sm">
+                <li>
+                  <Link
+                    className="text-gray-500 transition hover:text-gray-500/75"
+                    to="/profile  "
+                  >
+                    Profil
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-gray-500 transition hover:text-gray-500/75">
+                    {`Bienvenue ${userData.nom} `}
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+            <div className="flex items-center gap-4">
+              <div className="sm:flex sm:gap-4">
                 <Link
-                  className="text-gray-500 transition hover:text-gray-500/75"
-                  to="/event"
+                  className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
+                  onClick={logout}
                 >
-                  Events
+                  Logout
                 </Link>
-              </li>
+              </div>
 
-              <li>
-                <Link
-                  className="text-gray-500 transition hover:text-gray-500/75"
-                  to="/profile  "
+              <button className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden">
+                <span className="sr-only">Toggle menu</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
                 >
-                  Profil
-                </Link>
-              </li>
-
-              {/* <li>
-                <ScrollLink
-                  spy={true}
-                  smooth={true}
-                  offset={-50}
-                  duration={500}
-                  className="cursor-pointer text-gray-500 transition hover:text-gray-500/75"
-                  to="services"
-                >
-                  Services
-                </ScrollLink>
-              </li>
-
-              <li>
-                <ScrollLink
-                  spy={true}
-                  smooth={true}
-                  offset={-50}
-                  duration={500}
-                  className="cursor-pointer text-gray-500 transition hover:text-gray-500/75"
-                  to="about"
-                >
-                  About us
-                </ScrollLink>
-              </li>
-
-              <li>
-                <ScrollLink
-                  spy={true}
-                  smooth={true}
-                  offset={-50}
-                  duration={500}
-                  className="cursor-pointer text-gray-500 transition hover:text-gray-500/75"
-                  to="testimonials"
-                >
-                  Testimonials
-                </ScrollLink>
-              </li>
-              <li>
-                <ScrollLink
-                  spy={true}
-                  smooth={true}
-                  offset={-50}
-                  duration={500}
-                  className="cursor-pointer text-gray-500 transition hover:text-gray-500/75"
-                  to="contact"
-                >
-                  Contact us
-                </ScrollLink>
-              </li> */}
-            </ul>
-          </nav>
-
-          <div className="flex items-center gap-4">
-            <div className="sm:flex sm:gap-4">
-              <Link
-                className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
-                to="/login"
-              >
-                Login
-              </Link>
-
-              <Link
-                className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
-                to="/register"
-              >
-                Register
-              </Link>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
             </div>
-
-            <button className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden">
-              <span className="sr-only">Toggle menu</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
           </div>
-        </div>
+        ) : (
+          <div className="flex flex-1 items-center justify-end md:justify-between">
+            <nav aria-label="Site Nav" className="hidden md:block">
+              <ul className="flex items-center gap-6 text-sm">
+                <li>
+                  <Link
+                    className="text-gray-500 transition hover:text-gray-500/75"
+                    to="/event"
+                  >
+                    Events
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+
+            <div className="flex items-center gap-4">
+              <div className="sm:flex sm:gap-4">
+                <Link
+                  className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
+                  to="/login"
+                >
+                  Login
+                </Link>
+
+                <Link
+                  className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
+                  to="/register"
+                >
+                  Register
+                </Link>
+              </div>
+
+              <button className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden">
+                <span className="sr-only">Toggle menu</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );

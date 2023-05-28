@@ -62,7 +62,7 @@ router.get("/logout",authController.logout);
 
 router.get('/', userController.getAllUsers); //donner tous les utilisateurs
 router.get('/:id', userController.userInfo); //donner les information d'un utilisateur a partir de son id
-//router.put('/:id', userController.updateUser); //mettre a jour un utilisateur
+router.put('/:id', userController.updateUser); //mettre a jour un utilisateur
 router.delete('/:id', userController.deleteUser); //supprimer un utilisateur
 
 //router.post('/upload', uploadController.uploadProfil);

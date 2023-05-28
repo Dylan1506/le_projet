@@ -1,6 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const ProfileCard = () => {
+
+  const userData =useSelector((state)=>state.userReducer);
+
+
   return (
     <div className="flex w-full items-center justify-center gap-8 text-gray-700">
       <div className="relative flex aspect-square h-full flex-col items-center justify-center gap-4 rounded-lg border px-16 py-8 text-center">
@@ -27,7 +32,7 @@ const ProfileCard = () => {
         />
 
         <div className="flex flex-col gap-1">
-          <p className="font-bold text-teal-700">Gabimaru Tsuki</p>
+          <p className="font-bold text-teal-700">{`${userData.nom} ${userData.prenom}`}</p>
           <p className="text-sm">Evenements 25</p>
           <p className="text-sm">Participes 325</p>
         </div>
@@ -36,21 +41,14 @@ const ProfileCard = () => {
       <div class="w-full max-w-md overflow-x-auto rounded-lg border border-gray-200">
         <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
           <tbody class="divide-y divide-gray-200">
-            <tr>
-              <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                Nom d'utilisateur
-              </td>
-              <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                The Hollow
-              </td>
-            </tr>
+            
 
             <tr>
               <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                 Nom
               </td>
               <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                Gabimaru
+                {userData.nom}
               </td>
             </tr>
 
@@ -58,7 +56,7 @@ const ProfileCard = () => {
               <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                 Prenom
               </td>
-              <td class="whitespace-nowrap px-4 py-2 text-gray-700">Tsuki</td>
+              <td class="whitespace-nowrap px-4 py-2 text-gray-700">{userData.prenom}</td>
             </tr>
 
             <tr>
@@ -66,16 +64,16 @@ const ProfileCard = () => {
                 Email
               </td>
               <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                GabiTsuki20@gmail.com
+                {userData.email}
               </td>
             </tr>
 
             <tr>
               <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                Address
+                Adresse
               </td>
               <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                Japan, Tokyo
+              {`${userData.ville} ${userData.adresse}`}
               </td>
             </tr>
           </tbody>

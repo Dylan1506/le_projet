@@ -57,6 +57,10 @@ const userSchema = new mongoose.Schema(
             type: String,
             max: 1024
         },
+        ville: {
+            type: String,
+            max: 1024
+        },
       
       
         picture: {

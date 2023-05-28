@@ -3,7 +3,7 @@ import axios from "axios";
 import { UidContext } from "../components/AppContext";
 import { Link } from "react-router-dom";
 
-const NewEvent = () => {
+const UpdateEvent = () => {
   const uid = useContext(UidContext);
 
   const [titre, setTitre] = useState("");
@@ -51,7 +51,7 @@ const NewEvent = () => {
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg text-center">
           <h1 className="text-2xl font-bold sm:text-3xl">
-            Create a new event!
+                UPDATE EVENT
           </h1>
 
           <p className="mt-4 text-gray-500">
@@ -213,4 +213,4 @@ const NewEvent = () => {
   );
 };
 
-export default NewEvent;
+export default UpdateEvent;

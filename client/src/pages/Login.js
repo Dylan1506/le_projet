@@ -1,6 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const emailError = document.querySelector(".email.error");
+    const passwordError = document.querySelector(".password.error");
+
+    axios({
+      method: "post",
+      url: "http://localhost:5000/api/user/login",
+      withCredentials: true,
+      data: {
+        email,
+        password,
+      },
+    })
+      .then((res) => {
+        if (res.data.errors) {
+          console.log("l'erreur vient d'ici");
+        } else {
+          window.location = "/Profile";
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <section className="relative flex flex-wrap bg-gray-100 lg:h-screen lg:items-center">
       <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
@@ -13,7 +43,11 @@ const Login = () => {
           </p>
         </div>
 
-        <form action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+        <form
+          action=""
+          onSubmit={handleLogin}
+          className="mx-auto mb-0 mt-8 max-w-md space-y-4"
+        >
           <div>
             <label htmlFor="email" className="sr-only">
               Email
@@ -22,8 +56,12 @@ const Login = () => {
             <div className="relative">
               <input
                 type="email"
+                name="email"
+                id="email"
                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
               />
 
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -53,8 +91,12 @@ const Login = () => {
             <div className="relative">
               <input
                 type="password"
+                name="password"
+                id="password"
                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
               />
 
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
