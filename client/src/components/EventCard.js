@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
-import { useSelector } from "react-redux";
 import { UidContext } from "./AppContext";
-
 
 const EventCard = (props) => {
   const { userData, eventsData } = props;
@@ -18,7 +16,10 @@ const EventCard = (props) => {
           return (
             <>
               {/*  */}
-              <article className="rounded-xl border-2 border-gray-100 bg-white" key={event._id}>
+              <article
+                className="rounded-xl border-2 border-gray-100 bg-white"
+                key={event._id}
+              >
                 <div className="flex flex-col items-start gap-4 p-4 lg:p-4">
                   <img
                     alt="Home"

@@ -5,7 +5,6 @@ import { UidContext } from "../components/AppContext";
 import axios from "axios";
 import cookie from "js-cookie";
 import { useSelector } from "react-redux";
-import userReducer from "../reducers/user.reducer";
 
 const Navbar = () => {
   const uid = useContext(UidContext);
@@ -102,6 +101,14 @@ const Navbar = () => {
           <div className="flex flex-1 items-center justify-end md:justify-between">
             <nav aria-label="Site Nav" className="hidden md:block">
               <ul className="flex items-center gap-6 text-sm">
+                <li>
+                  <Link
+                    className="text-gray-500 transition hover:text-gray-500/75"
+                    to="/dashboard"
+                  >
+                    Dashboard
+                  </Link>
+                </li>
                 <li>
                   <Link
                     className="text-gray-500 transition hover:text-gray-500/75"

@@ -16,13 +16,11 @@ import EditProfile from "./pages/EditProfile";
 import { useDispatch } from "react-redux";
 import { getUser } from "./actions/user.actions";
 import UpdateEvent from "./components/UpdateEvent";
-
-
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   const [uid, setUid] = useState(null);
   const dispatch = useDispatch();
-  
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -39,8 +37,7 @@ const App = () => {
     fetchToken();
 
     if (uid) dispatch(getUser(uid));
-   
-  }, [uid,dispatch]);
+  }, [uid, dispatch]);
 
   return (
     <UidContext.Provider value={uid}>
@@ -54,6 +51,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />

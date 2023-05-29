@@ -2,13 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const ProfileCard = () => {
-
-  const userData =useSelector((state)=>state.userReducer);
-
+  const userData = useSelector((state) => state.userReducer);
 
   return (
     <div className="flex w-full items-center justify-center gap-8 text-gray-700">
-      <div className="relative flex aspect-square h-full flex-col items-center justify-center gap-4 rounded-lg border px-16 py-8 text-center">
+      <div className="relative flex aspect-square h-full flex-col items-center justify-center gap-4 rounded-lg border bg-white px-16 py-8 text-center">
         <a
           class="absolute right-2 top-2 inline-block rounded-xl border border-teal-600 bg-teal-600 p-3 text-white hover:bg-transparent hover:text-teal-600 focus:outline-none focus:ring active:text-teal-500"
           href="/edit-profile"
@@ -32,17 +30,15 @@ const ProfileCard = () => {
         />
 
         <div className="flex flex-col gap-1">
-          <p className="font-bold text-teal-700">{`${userData.nom} ${userData.prenom}`}</p>
-          <p className="text-sm">Evenements 25</p>
-          <p className="text-sm">Participes 325</p>
+          <p className="font-bold text-teal-700">{`${
+            userData?.nom || "Lamine"
+          } ${userData?.prenom || "Diamoutene"}`}</p>
         </div>
       </div>
 
       <div class="w-full max-w-md overflow-x-auto rounded-lg border border-gray-200">
         <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
           <tbody class="divide-y divide-gray-200">
-            
-
             <tr>
               <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                 Nom
@@ -56,7 +52,9 @@ const ProfileCard = () => {
               <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                 Prenom
               </td>
-              <td class="whitespace-nowrap px-4 py-2 text-gray-700">{userData.prenom}</td>
+              <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                {userData.prenom}
+              </td>
             </tr>
 
             <tr>
@@ -73,7 +71,7 @@ const ProfileCard = () => {
                 Adresse
               </td>
               <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-              {`${userData.ville} ${userData.adresse}`}
+                {`${userData.ville} ${userData.adresse}`}
               </td>
             </tr>
           </tbody>
