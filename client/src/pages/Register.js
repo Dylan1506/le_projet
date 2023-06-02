@@ -39,6 +39,7 @@ const Register = () => {
           prenom,
           email,
           password,
+          status:'user',
         },
       })
         .then((res) => {
@@ -268,7 +269,7 @@ const Register = () => {
 
                 <p className="mt-4 text-sm text-gray-500 sm:mt-0">
                   Already have an account?
-                  <a href="/" className="text-gray-700 underline">
+                  <a href="/login" className="text-gray-700 underline">
                     Log in
                   </a>
                   .

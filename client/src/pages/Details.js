@@ -1,15 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UidContext } from "../components/AppContext";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const Details = () => {
+  const { id } = useParams(); //id extrait du lien
+
+  console.log("id");
+  console.log(id);
+
+  const uid = useContext(UidContext);
+  const userData = useSelector((state) => state.userReducer);
+  const eventsData = useSelector((state) => state.allEventReducer);
+  const usersData = useSelector((state) => state.usersReducer);
+  const eventsArray = Object.keys(eventsData).map((key) => eventsData[key]);
+  const usersArray = Object.keys(usersData).map((key) => usersData[key]);
+
+  const usersSort = usersArray.filter((user) => user._id !== uid);
+  const eventSort = eventsArray.filter((event) => event._id === id);
+  console.log(eventSort);
+
   return (
     <main className="bg-gray-50">
       <div className="mx-auto flex max-w-7xl gap-4 p-6">
         <section>
           <div class="relative mx-auto max-w-screen-xl px-4 py-8">
             <div>
-              <h1 class="text-2xl font-bold lg:text-3xl">Name Of Event</h1>
+              <h1 class="text-2xl font-bold lg:text-3xl">{eventSort[0].titre}</h1>
 
-              <p class="mt-1 text-sm text-gray-500">ID: #012345</p>
+              <p class="mt-1 text-sm text-gray-500">{eventSort[0].lieu}</p>
             </div>
 
             <div class="grid gap-8 lg:grid-cols-4 lg:items-start">
@@ -37,7 +56,7 @@ const Details = () => {
                       />
                     </svg>
 
-                    <span class="ms-1.5 text-xs"> Hover to zoom </span>
+                    <span class="ms-1.5 text-xs"> {eventSort[0].date_debut} </span>
                   </div>
                 </div>
 
@@ -204,13 +223,7 @@ const Details = () => {
               <div class="lg:col-span-3">
                 <div class="prose max-w-none">
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ullam totam eos iusto repellat blanditiis voluptate
-                    aspernatur, quae nemo exercitationem cum debitis! Sint
-                    consectetur laborum tempora repellat odit. Impedit quasi
-                    reprehenderit harum illum sequi provident soluta cum
-                    quisquam odit possimus? Officia illum saepe magnam nostrum,
-                    officiis placeat iure itaque cumque voluptate?
+                    {eventSort[0].description}
                   </p>
                 </div>
               </div>

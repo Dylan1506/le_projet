@@ -1,36 +1,44 @@
-import React from "react";
+import React, { useContext } from "react";
 import EventCard from "../components/EventCard";
 import ProfileCard from "../components/ProfileCard";
 import { useSelector } from "react-redux";
+import { UidContext } from "../components/AppContext";
+import Dashboard from "./Dashboard";
 
 function Profile() {
+  const uid = useContext(UidContext);
   const userData = useSelector((state) => state.userReducer);
-  const eventsData= useSelector((state)=> state.allEventReducer);
-
-  
+  const eventsData = useSelector((state) => state.allEventReducer);
 
   return (
-    <section className="" >
-      <div className="mx-auto flex max-w-screen-xl flex-col items-center gap-8 px-4 sm:px-6 lg:px-8">
-        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-gray-800 lg:text-4xl">
-          User Profil
-        </h1>
+    <>
+      <div className="profile-page">
+        {uid && userData.status === "admin" ? (
+          <Dashboard />
+        ) : (
+          <section className="">
+            <div className="mx-auto flex max-w-screen-xl flex-col items-center gap-8 px-4 sm:px-6 lg:px-8">
+              <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-gray-800 lg:text-4xl">
+                User Profil
+              </h1>
 
-        <ProfileCard />
+              <ProfileCard />
 
-        <a
-          class="inline-block rounded border border-teal-600 bg-teal-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-teal-600 focus:outline-none focus:ring active:text-teal-500"
-          href="/event"
-        >
-          Create a new event
-        </a>
+              <a
+                class="inline-block rounded border border-teal-600 bg-teal-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-teal-600 focus:outline-none focus:ring active:text-teal-500"
+                href="/event"
+              >
+                Create a new event
+              </a>
 
-        <div className="grid grid-cols-2 gap-4">
-          <EventCard userData={userData} eventsData={eventsData} />
-         
-        </div>
+              <div className="grid grid-cols-2 gap-4">
+                <EventCard userData={userData} eventsData={eventsData} />
+              </div>
+            </div>
+          </section>
+        )}
       </div>
-    </section>
+    </>
   );
 }
 

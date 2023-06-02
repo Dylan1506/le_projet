@@ -10,6 +10,7 @@ router.get('/',eventController.readEvent); //afficher tous les evenements
 router.get('/:id',eventController.eventInfo); //afficher un evenement specifique
 router.put('/:id',eventController.updateEvent); // mettre a jour les infos d'un evenement
 router.delete('/:id',eventController.deleteEvent); //supprimer un evement
+router.post('/inscrire/:eventId',eventController.inscrireEvent);
 
 
 //les routes pour les commentaires

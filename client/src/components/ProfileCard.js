@@ -31,8 +31,8 @@ const ProfileCard = () => {
 
         <div className="flex flex-col gap-1">
           <p className="font-bold text-teal-700">{`${
-            userData?.nom || "Lamine"
-          } ${userData?.prenom || "Diamoutene"}`}</p>
+            userData?.nom || "Dylan"
+          } ${userData?.prenom || "Bli"}`}</p>
         </div>
       </div>
 

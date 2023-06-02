@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 
+const participantSchema= new mongoose.Schema({
+  id:{type:String,required:true},
+  // nom:{type:String,required:true},
+  // prenom:{type:String,required:true}
+})
 
 // Définition du schéma d'événement
 const eventSchema = new mongoose.Schema({
@@ -42,7 +47,9 @@ const eventSchema = new mongoose.Schema({
     type:[String],
     default:[]
   },
-  participants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+  participants: [
+    participantSchema
+  ]
 });
 
 // Création du modèle d'événement

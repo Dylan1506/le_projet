@@ -19,7 +19,8 @@ module.exports.signUp = async (req, res) => {
         nom,
         prenom,
         email,
-        password
+        password,
+        status
        
     } = req.body;
     try {
@@ -28,7 +29,8 @@ module.exports.signUp = async (req, res) => {
             nom,
             prenom,
             email,
-            password
+            password,
+            status,
           
             
         });
@@ -49,7 +51,8 @@ module.exports.signUpAdmin = async (req, res) => {
         prenom,
         email,
         password,
-        contact   
+        contact,
+        status,   
     } = req.body;
 
     try {
@@ -59,7 +62,8 @@ module.exports.signUpAdmin = async (req, res) => {
             prenom,
             email,
             password,
-            contact  
+            contact ,
+            status, 
         });
         res.status(201).json({ user: user._id });
     } catch (err) {
