@@ -18,6 +18,7 @@ import { getUser } from "./actions/user.actions";
 import UpdateEvent from "./components/UpdateEvent";
 import Dashboard from "./pages/Dashboard";
 import Details from "./pages/Details";
+import EditEvent from "./pages/EditEvent";
 
 const App = () => {
   const [uid, setUid] = useState(null);
@@ -52,6 +53,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path="/edit-event/:id" element={<EditEvent />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/details/:id" element={<Details />} />
           <Route path="*" element={<Error />} />
